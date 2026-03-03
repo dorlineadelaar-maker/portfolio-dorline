@@ -8,15 +8,24 @@ body {
   justify-content: center; /* Centre horizontalement */
   align-items: center; /* Centre verticalement*/
   height: 100vh; /* Assure que le corps prend toute la hauteur de la fenêtre */
+  padding-top: 80px; /* Laisse de l'espace pour la navbar */
 }
 
 /* Style de la carte de visite */
-.card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* ===== CARTE PRINCIPALE MODERNE ===== */
+
+.card { /* Fond blanc avec transparence pour un effet moderne */
+  background: rgba(255, 255, 255, 0.9); /* Blanc légèrement transparent */
+  backdrop-filter: blur(10px); /* Effet flou derrière */
+
+  padding: 40px;
+  border-radius: 20px;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
   text-align: center;
+  max-width: 500px;
+  width: 90%;
 }
 
 /* rend l'image ronde et ajuste sa taille */
@@ -131,4 +140,163 @@ body {
 /* Effet hover projet */
 .project-card:hover {
   transform: translateY(-5px);
+}
+
+/* ===== NAVBAR ===== */
+
+/* Conteneur principal de la barre */
+.navbar {
+  position: fixed; /* reste en haut même quand on scroll */
+  top: 0;
+  width: 100%;
+
+  padding: 15px 40px;
+
+  display: flex; /* aligne logo et liens horizontalement */
+  justify-content: space-between; /* espace entre gauche et droite */
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.9); /* blanc semi transparent */
+  backdrop-filter: blur(10px); /* effet verre moderne */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Style du logo */
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Liens de navigation */
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease; /* animation douce */
+}
+
+/* Effet au survol */
+.nav-links a:hover {
+  color: #4f46e5;
+}
+
+/* ===== SECTION CONTACT ===== */
+
+.contact-links {
+  margin-top: 20px;
+
+  display: flex;
+  flex-wrap: wrap; /* Permet le retour à la ligne si trop large */
+  justify-content: center;
+  gap: 10px; /* Espace entre les boutons */
+}
+
+/* ===== PAGE CONTACT ===== */
+
+.contact-page {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.contact-page h1 {
+  margin-bottom: 30px;
+}
+
+html {
+  scroll-behavior: smooth; /* Animation douce quand on clique */
+}
+
+/* ===== PAGE CONTACT - CENTRAGE & FOND ===== */
+
+/* La section prend toute la hauteur de l'écran */
+.contact-page {
+  min-height: 100vh; /* 100% de la hauteur de la fenêtre */
+
+  display: flex; /* Active Flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+
+  background-color: #f4f6fb; /* Fond doux légèrement bleuté */
+}
+
+/* ===== CARTE CONTACT ===== */
+
+.contact-card {
+  background-color: #ffffff; /* Fond blanc */
+
+  padding: 50px; /* Espace intérieur */
+  border-radius: 20px; /* Coins arrondis modernes */
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); 
+  /* Ombre douce pour effet flottant */
+
+  max-width: 500px; /* Largeur maximale */
+  width: 90%; /* Adaptation mobile */
+
+  text-align: center; /* Centre le texte */
+}
+
+/* ===== BOUTONS MODERNES ===== */
+
+.btn {
+  display: inline-block; /* Permet padding & margin */
+
+  padding: 12px 22px; /* Taille du bouton */
+  border-radius: 8px; /* Coins arrondis */
+
+  text-decoration: none; /* Supprime le soulignement */
+  font-weight: 500; /* Texte un peu plus épais */
+
+  transition: all 0.3s ease; /* Animation douce */
+
+  background-color: #4f46e5; /* Violet moderne */
+  color: white; /* Texte blanc */
+}
+
+/* Version secondaire (plus légère) */
+.btn.secondary {
+  background-color: #e0e7ff; /* Violet clair */
+  color: #4f46e5; /* Texte violet */
+}
+
+/* Effet au survol */
+.btn:hover {
+  transform: translateY(-3px); /* Légère élévation */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre au hover */
+}
+
+/* ===== FOND MODERNE DE LA PAGE ACCUEIL ===== */
+
+/* Remplace l'ancien background du body */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  /* Dégradé moderne violet → bleu */
+  background: linear-gradient(
+    135deg,          /* Angle du dégradé */
+    #667eea,         /* Couleur 1 */
+    #764ba2          /* Couleur 2 */
+  );
+
+  min-height: 100vh; /* Prend toute la hauteur */
+}
+
+/* ===== ANIMATION ULTRA FLUIDE ===== */
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Appliquée à la carte */
+.card {
+  animation: fadeSlide 0.7s ease-out forwards;
 }
