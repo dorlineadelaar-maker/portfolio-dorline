@@ -6,6 +6,7 @@
   <title>Portfolio - Dorline</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Barre de navigation -->
@@ -23,9 +24,12 @@
   <!-- Conteneur principal -->
   <div class="card">
 
-    <!-- Image de profil -->
-    <img src="https://via.placeholder.com/150" alt="Photo de profil">
-
+<!-- Image de profil cliquable -->
+<img 
+  src="images/photo.jpg" 
+  alt="Photo de Dorline Adelaar"
+  id="profile-pic"
+>
     <!-- Nom -->
     <h1>Dorline Adelaar</h1>
 
@@ -39,6 +43,34 @@
       <span>JavaScript</span>
     </div>
 
+<!-- ===== SECTION A PROPOS ===== -->
+<section class="about">
+
+  <div class="about-container">
+
+    <h2>À propos de moi</h2>
+
+    <p>
+      Je m'appelle Dorline Adelaar, développeuse web en reconversion.
+      Après plusieurs expériences dans la restauration et le service client,
+      j'ai décidé de me spécialiser dans le développement web.
+    </p>
+
+    <p>
+      Je me forme actuellement au développement front-end avec HTML,
+      CSS et JavaScript en réalisant des projets pratiques et en
+      construisant mon portfolio.
+    </p>
+
+  </div>
+
+</section>
+
+    <!-- Télécharger CV -->
+<a href="assets/cv-dorline-adelaar.pdf" download class="btn">
+📄 Télécharger mon CV
+</a>
+
      <!-- Boutons -->
 <div class="contact-links">
 
@@ -48,17 +80,17 @@
   </a>
 
   <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/dorline-adelaar-63ba19295/" target="_blank" class="btn secondary">
+  <a href="https://www.linkedin.com/in/dorline-adelaar-63ba19295/" target="_blank" class="btn secondary" rel="noopener noreferrer">
     💼 LinkedIn
   </a>
 
   <!-- GitHub -->
-  <a href="https://github.com/dorlineadelaar-maker" target="_blank" class="btn secondary">
+  <a href="https://github.com/dorlineadelaar-maker" target="_blank" class="btn secondary" rel="noopener noreferrer">
     💻 GitHub
   </a>
 
   <!-- Discord -->
-  <a href="https://discord.gg/Jk2ZYYWF" target="_blank" class="btn secondary">
+  <a href="https://discord.gg/Jk2ZYYWF" target="_blank" class="btn secondary" rel="noopener noreferrer">
     🎮 Discord
   </a>
 
@@ -70,7 +102,16 @@
 </div>
 
   
+<!-- Overlay qui va afficher l'image agrandie -->
+<div id="image-overlay">
 
-</section>
+  <!-- Image agrandie -->
+  <img id="overlay-img" src="images/photo.jpg" alt="Photo agrandie">
+
+</div>
+
+<!-- Script JavaScript -->
+<script src="script.js"></script>
+
 </body>
 </html>
