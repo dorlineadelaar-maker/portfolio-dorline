@@ -101,4 +101,4 @@ Je m'appelle Dorline Adelaar et je suis actuellement en reconversion vers le dé
 
 J'apprends HTML, CSS et JavaScript en autodidacte et je cherche une alternance en développement web afin de continuer à progresser et acquérir de l’expérience professionnelle.
 
-📧 Contact : dorlineadelaar@gmail.c
+📧 Contact : dorlineadelaar@gmail.com
