@@ -2,17 +2,29 @@
 const profilePic = document.getElementById("profile-pic");
 const overlay = document.getElementById("image-overlay");
 
-// Quand on clique sur la photo
-profilePic.addEventListener("click", () => {
+if (profilePic && overlay) {
 
-  overlay.style.display = "flex"; // affiche l'overlay
+  profilePic.addEventListener("click", () => {
 
-  // petit délai pour lancer l'animation
-  setTimeout(() => {
-    overlay.classList.add("active");
-  }, 10);
+    overlay.style.display = "flex";
 
-});
+    setTimeout(() => {
+      overlay.classList.add("active");
+    }, 10);
+
+  });
+
+  overlay.addEventListener("click", () => {
+
+    overlay.classList.remove("active");
+
+    setTimeout(() => {
+      overlay.style.display = "none";
+    }, 300);
+
+  });
+
+}
 
 // Quand on clique sur l'arrière-plan
 overlay.addEventListener("click", () => {

@@ -1,62 +1,122 @@
-/* Centre la carte au milieu de l'écran avec Flexbox */
+/* ===== LAYOUT & BASE STYLES ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-
-  display: flex; /* Active Flexbox */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement*/
-  height: 100vh; /* Assure que le corps prend toute la hauteur de la fenêtre */
-  padding-top: 80px; /* Laisse de l'espace pour la navbar */
-  
-  /* ===== FOND MODERNE DE LA PAGE ACCUEIL ===== */
-
-/* Remplace l'ancien background du body */
-
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(
-    135deg,
-    #667eea,
-    #764ba2
-  );
+  background: linear-gradient(135deg, #667eea, #764ba2);
   min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 120px 20px 40px;
+  /* espace haut + espace côtés + espace bas */
 }
 
+/* ===== NAVBAR ===== */
 
-/* Style de la carte de visite */
-/* ===== CARTE PRINCIPALE MODERNE ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 40px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
 
-.card { /* Fond blanc avec transparence pour un effet moderne */
-  background: rgba(255, 255, 255, 0.9); /* Blanc légèrement transparent */
-  backdrop-filter: blur(10px); /* Effet flou derrière */
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
 
+.logo img {
+  height: 40px;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #4f46e5;
+}
+
+/* ===== MAIN CARD (HOME PAGE) ===== */
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 20px;
-
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-
   text-align: center;
   max-width: 500px;
   width: 90%;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeSlide 0.7s ease-out forwards;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ← AJOUT IMPORTANT */
+  gap: 15px;
 }
 
-/* rend l'image ronde et ajuste sa taille */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
 .card img {
   width: 120px;
   height: 120px;
-  border-radius: 50%; /* Rend l'image ronde */
-  object-fit: cover; /* Évite la distorsion de l'image */
+  border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 15px;
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Conteneur des compétences */
+.card img:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 20px rgba(102,126,234,0.6),
+    0 0 40px rgba(118,75,162,0.5);
+}
+
+.hero-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #5b4bdb;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  text-shadow: 0 2px 8px rgba(91, 75, 219, 0.25);
+}
+
+/* ===== SKILLS SECTION ===== */
+
 .skills {
   margin: 15px 0;
 }
 
-/* Style des badges */
 .skills span {
   display: inline-block;
   background-color: #e0e7ff;
@@ -69,223 +129,202 @@ body {
 }
 
 .skills span:hover {
-  transform: scale(1.1); /* Grossit légèrement au survol */
+  transform: scale(1.1);
 }
 
-/* Style du bouton lien */
-.card .btn {
-  display: inline-block; /* Permet padding et transform */
+/* ===== BUTTONS ===== */
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
   background-color: #4f46e5;
   color: white;
-  text-decoration: none; /* Supprime le soulignement du lien */
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: all 0.3s ease;
 }
 
-/* Effet au survol */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn.secondary {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+  margin-left: 10px;
+}
+
+.btn.secondary:hover {
+  background-color: #c7d2fe;
+}
+
+.card .btn {
+  background-color: #4f46e5;
+  color: white;
+}
+
 .card .btn:hover {
   background-color: #3730a3;
   transform: translateY(-2px);
 }
 
-/* Effet lorsque la souris passe dessus */
-.card button:hover {
-  background-color: #3730a3; /* Couleur légèrement plus foncée */
-  transform: translateY(-2px); /* Donne un effet de "bouton qui se soulève" */
+/* ===== PROJECT CARDS ===== */
 
-}
-
-/* Animation douce pour la carte */
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Effet lorsque la souris passe sur la carte */
-.card:hover {
-  transform: translateY(-5px); /* Légère élévation */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Ombre plus marquée */
-}
-
-/* Adaptation pour petits écrans */
-@media (max-width: 400px) {
-
-  .card {
-    width: 90%; /* Prend presque toute la largeur */
-    padding: 15px; /* Moins d'espace intérieur */
-  }
-
-  .card img {
-    width: 100px;
-    height: 100px;
-  }
-
-}
-
-/* Bouton secondaire (plus clair) */
-.secondary {
-  background-color: #e0e7ff;
-  color: #3730a3;
-  margin-left: 10px;
-}
-
-.secondary:hover {
-  background-color: #c7d2fe;
-}
-
-/* Conteneur page projets */
 .projects-container {
-  text-align: center;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
   padding: 40px;
+  text-align: center;
 }
 
-/* Carte projet */
 .project-card {
   background: white;
   padding: 20px;
-  margin: 20px auto;
-  width: 300px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-/* Effet hover projet */
-.project-card:hover {
-  transform: translateY(-5px);
-}
-
-/* ===== NAVBAR ===== */
-
-/* Conteneur principal de la barre */
-.navbar {
-  position: fixed; /* reste en haut même quand on scroll */
-  top: 0;
-  width: 100%;
-
-  padding: 15px 40px;
-
-  display: flex; /* aligne logo et liens horizontalement */
-  justify-content: space-between; /* espace entre gauche et droite */
-  align-items: center;
-
-  background: rgba(255, 255, 255, 0.9); /* blanc semi transparent */
-  backdrop-filter: blur(10px); /* effet verre moderne */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* Style du logo */
-.logo {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/* Liens de navigation */
-.nav-links a {
-  margin-left: 20px;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease; /* animation douce */
-}
-
-/* Effet au survol */
-.nav-links a:hover {
-  color: #4f46e5;
-}
-
-/* ===== SECTION CONTACT ===== */
-
-.contact-links {
-  margin-top: 20px;
-
+  color: inherit;
+  width: 100%;
+  max-width: 340px;
+  
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.6s ease forwards;
+  
+  /* ===== STRUCTURE INTERNE DES CARTES ===== */
+  
   display: flex;
-  flex-wrap: wrap; /* Permet le retour à la ligne si trop large */
-  justify-content: center;
-  gap: 10px; /* Espace entre les boutons */
+  flex-direction: column;
+  /* empile les éléments verticalement */
+  height: 100%;
+  /* permet d'utiliser tout l'espace disponible pour les éléments internes */
 }
 
-/* ===== PAGE CONTACT ===== */
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-buttons {
+  margin-top: auto; /* pousse les boutons vers le bas de la carte */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ===== CONTACT PAGE ===== */
 
 .contact-page {
+  min-height: 100vh;
   margin-top: 120px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #f4f6fb;
   text-align: center;
 }
 
-.contact-page h1 {
-  margin-bottom: 30px;
-}
-
-html {
-  scroll-behavior: smooth; /* Animation douce quand on clique */
-}
-
-/* ===== PAGE CONTACT - CENTRAGE & FOND ===== */
-
-/* La section prend toute la hauteur de l'écran */
-.contact-page {
-  min-height: 100vh; /* 100% de la hauteur de la fenêtre */
-
-  display: flex; /* Active Flexbox */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-
-  background-color: #f4f6fb; /* Fond doux légèrement bleuté */
-}
-
-/* ===== CARTE CONTACT ===== */
-
 .contact-card {
-  background-color: #ffffff; /* Fond blanc */
-
-  padding: 50px; /* Espace intérieur */
-  border-radius: 20px; /* Coins arrondis modernes */
-
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); 
-  /* Ombre douce pour effet flottant */
-
-  max-width: 500px; /* Largeur maximale */
-  width: 90%; /* Adaptation mobile */
-
-  text-align: center; /* Centre le texte */
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
 }
 
-/* ===== BOUTONS MODERNES ===== */
-
-.btn {
-  display: inline-block; /* Permet padding & margin */
-
-  padding: 12px 22px; /* Taille du bouton */
-  border-radius: 8px; /* Coins arrondis */
-
-  text-decoration: none; /* Supprime le soulignement */
-  font-weight: 500; /* Texte un peu plus épais */
-
-  transition: all 0.3s ease; /* Animation douce */
-
-  background-color: #4f46e5; /* Violet moderne */
-  color: white; /* Texte blanc */
+.contact-links {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* Version secondaire (plus légère) */
-.btn.secondary {
-  background-color: #e0e7ff; /* Violet clair */
-  color: #4f46e5; /* Texte violet */
+/* ===== ABOUT SECTION ===== */
+
+.about {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
 }
 
-/* Effet au survol */
-.btn:hover {
-  transform: translateY(-3px); /* Légère élévation */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre au hover */
+.about-container {
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
 }
 
-/* ===== FOND MODERNE DE LA PAGE ACCUEIL ===== */
+.about-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* Remplace l'ancien background du body */
+/* ===== IMAGE OVERLAY (LIGHTBOX) ===== */
 
+#image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
-/* ===== ANIMATION ULTRA FLUIDE ===== */
+#overlay-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+#image-overlay.active #overlay-img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ===== ANIMATIONS ===== */
 
 @keyframes fadeSlide {
   from {
@@ -298,204 +337,33 @@ html {
   }
 }
 
-/* Appliquée à la carte */
-.card {
-  animation: fadeSlide 0.7s ease-out forwards;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ===== OVERLAY IMAGE ===== */
+/* ===== RESPONSIVE ===== */
 
-#image-overlay {
-
-  position: fixed; /* couvre tout l'écran */
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  background: rgba(0,0,0,0.5); /* fond sombre */
-
-  backdrop-filter: blur(8px); /* floute l'arrière-plan */
-
-  display: none; /* caché au départ */
-
-  justify-content: center;
-  align-items: center;
-
-  z-index: 999;
+@media (max-width: 400px) {
+  
+  body {
+    padding: 100px 15px 40px;
+  } 
+  
+  .card {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  .card img {
+    width: 100px;
+    height: 100px;
+  }
 }
 
-/* Image agrandie */
-#overlay-img {
-
-  width: 300px;
-  height: 300px;
-
-  border-radius: 50%; /* reste en cercle */
-
-  object-fit: cover;
-
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-
-/* curseur sur la photo */
-#profile-pic {
-  cursor: pointer;
-}
-
-/* ===== ANIMATION PHOTO PROFIL ===== */
-
-/* Animation quand on passe la souris */
-#profile-pic {
-
-  cursor: pointer; /* montre que l'image est cliquable */
-
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-
-}
-
-/* effet zoom au hover */
-#profile-pic:hover {
-
-  transform: scale(1.08); /* agrandit légèrement */
-
-  box-shadow: 
-    0 0 20px rgba(102,126,234,0.6),
-    0 0 40px rgba(118,75,162,0.5);
-
-}
-
-/* ===== ZOOM STYLE INSTAGRAM ===== */
-
-/* Animation quand l'image s'ouvre */
-#overlay-img {
-
-  width: 300px;
-  height: 300px;
-
-  border-radius: 50%;
-  object-fit: cover;
-
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-
-  /* animation de départ */
-  transform: scale(0.5);
-  opacity: 0;
-
-  transition: transform 0.35s ease, opacity 0.35s ease;
-
-}
-
-/* Quand l'image est visible */
-#image-overlay.active #overlay-img {
-
-  transform: scale(1);
-  opacity: 1;
-
-}
-
-/* ===== IMAGES PROJETS ===== */
-
-.project-card img {
-
-  width: 100%;
-  height: 180px;
-
-  object-fit: cover;
-
-  border-radius: 10px;
-
-  margin-bottom: 15px;
-
-}
-
-/* Boutons projets */
-
-.project-buttons {
-
-  margin-top: 15px;
-
-  display: flex;
-
-  justify-content: center;
-
-  gap: 10px;
-
-}
-
-/* animation au hover */
-
-.project-card {
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-}
-
-.project-card:hover {
-
-  transform: translateY(-8px);
-
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-
-}
-
-/* ===== GRILLE PROJETS MODERNE (POUR UN PROJET PLUS RESPONSIVE) ===== */
-
-.projects-container {
-
-  max-width: 1100px;
-  margin: auto;
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-  gap: 30px;
-
-  padding: 40px;
-
-}
-
-/* ===== SECTION A PROPOS ===== */
-
-.about {
-
-  padding: 80px 20px;
-
-  display: flex;
-  justify-content: center;
-
-}
-
-/* conteneur texte */
-
-.about-container {
-
-  max-width: 700px;
-
-  background: rgba(255,255,255,0.9);
-
-  padding: 40px;
-
-  border-radius: 20px;
-
-  text-align: center;
-
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-
-  opacity: 0;
-  transform: translateY(30px);
-
-  transition: all 0.8s ease;
-
-}
-
-/* état visible */
-
-.about-container.visible {
-
-  opacity: 1;
-  transform: translateY(0);
-
-}
